@@ -1,0 +1,196 @@
+{
+  "550e8400-e29b-41d4-a716-446655440000": [
+    {
+      "sender": "550e8400-e29b-41d4-a716-446655440000",
+      "content": "Hey, how are you?",
+      "timestamp": "2025-03-03T10:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "550e8400-e29b-41d4-a716-446655440001",
+      "content": "I'm good, thanks! How about you?",
+      "timestamp": "2025-03-03T10:01:00Z",
+      "read": true
+    },
+    {
+      "sender": "550e8400-e29b-41d4-a716-446655440000",
+      "content": "Doing well, just busy with work.",
+      "timestamp": "2025-03-03T10:02:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440001": [
+    {
+      "sender": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Are we meeting tomorrow?",
+      "timestamp": "2025-03-03T12:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "550e8400-e29b-41d4-a716-446655440000",
+      "content": "Yes, let's meet at 10 AM.",
+      "timestamp": "2025-03-03T12:05:00Z",
+      "read": true
+    },
+    {
+      "sender": "550e8400-e29b-41d4-a716-446655440002",
+      "content": "Perfect, see you then!",
+      "timestamp": "2025-03-03T12:10:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440002": [
+    {
+      "sender": "user5",
+      "content": "Can you send me the report?",
+      "timestamp": "2025-03-03T14:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user6",
+      "content": "Sure, give me a moment.",
+      "timestamp": "2025-03-03T14:02:00Z",
+      "read": true
+    },
+    {
+      "sender": "user5",
+      "content": "Thanks a lot!",
+      "timestamp": "2025-03-03T14:05:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440003": [
+    {
+      "sender": "user7",
+      "content": "Happy Birthday!",
+      "timestamp": "2025-03-03T16:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user8",
+      "content": "Thank you!",
+      "timestamp": "2025-03-03T16:01:00Z",
+      "read": true
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440004": [
+    {
+      "sender": "user9",
+      "content": "Let's catch up soon.",
+      "timestamp": "2025-03-03T18:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user10",
+      "content": "Absolutely, how about this weekend?",
+      "timestamp": "2025-03-03T18:05:00Z",
+      "read": true
+    },
+    {
+      "sender": "user9",
+      "content": "Works for me!",
+      "timestamp": "2025-03-03T18:10:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440005": [
+    {
+      "sender": "user11",
+      "content": "Did you watch the game last night?",
+      "timestamp": "2025-03-03T20:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user12",
+      "content": "Yes, it was amazing!",
+      "timestamp": "2025-03-03T20:01:00Z",
+      "read": true
+    },
+    {
+      "sender": "user11",
+      "content": "I can't believe that last-minute goal.",
+      "timestamp": "2025-03-03T20:02:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440006": [
+    {
+      "sender": "user13",
+      "content": "Can you help me with my homework?",
+      "timestamp": "2025-03-03T22:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user14",
+      "content": "Of course, what do you need help with?",
+      "timestamp": "2025-03-03T22:05:00Z",
+      "read": true
+    },
+    {
+      "sender": "user13",
+      "content": "Math problems.",
+      "timestamp": "2025-03-03T22:10:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440007": [
+    {
+      "sender": "user15",
+      "content": "What's the plan for tonight?",
+      "timestamp": "2025-03-03T23:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user16",
+      "content": "We're going to the movies.",
+      "timestamp": "2025-03-03T23:05:00Z",
+      "read": true
+    },
+    {
+      "sender": "user15",
+      "content": "Great, can't wait!",
+      "timestamp": "2025-03-03T23:10:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440008": [
+    {
+      "sender": "user17",
+      "content": "Did you finish the project?",
+      "timestamp": "2025-03-04T01:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user18",
+      "content": "Almost done, just a few more tweaks.",
+      "timestamp": "2025-03-04T01:05:00Z",
+      "read": true
+    },
+    {
+      "sender": "user17",
+      "content": "Alright, keep me posted.",
+      "timestamp": "2025-03-04T01:10:00Z",
+      "read": false
+    }
+  ],
+  "550e8400-e29b-41d4-a716-446655440009": [
+    {
+      "sender": "user19",
+      "content": "When is the meeting scheduled?",
+      "timestamp": "2025-03-04T03:00:00Z",
+      "read": true
+    },
+    {
+      "sender": "user20",
+      "content": "It's at 2 PM tomorrow.",
+      "timestamp": "2025-03-04T03:05:00Z",
+      "read": true
+    },
+    {
+      "sender": "user19",
+      "content": "Got it, I'll be there.",
+      "timestamp": "2025-03-04T03:10:00Z",
+      "read": false
+    }
+  ]
+}
