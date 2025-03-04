@@ -5,7 +5,8 @@ let cachedConversations = null;
 export async function getUsers() {
     if (cachedUsers === null) {
         try {
-            const response = await fetch("/data/users.json");
+            console.log(window.location.href);
+            const response = await fetch(`${window.location.href}/data/users.json`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.statusText}`);
             }
@@ -20,7 +21,7 @@ export async function getUsers() {
 export async function getMessages() {
     if (cachedMessages === null) {
         try {
-            const response = await fetch("/data/messages.json");
+            const response = await fetch(`${window.location.href}/data/messages.json`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.statusText}`);
             }
@@ -35,7 +36,7 @@ export async function getMessages() {
 export async function getConversations() {
     if (cachedConversations === null) {
         try {
-            const response = await fetch("/data/conversations.json");
+            const response = await fetch(`${window.location.href}/data/conversations.json`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.statusText}`);
             }
