@@ -50,6 +50,9 @@ We welcome contributions to the Chat App! To contribute, please follow these ste
     ```
 5. Open a pull request on GitHub.
 
+## Contributors
+- Stryker
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
