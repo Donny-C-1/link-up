@@ -1,0 +1,14 @@
+{
+  "name": "link-up",
+  "version": "1.0.0",
+  "description": "A basic chat app ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Testing 1 2 3...\""
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Donny C",
+  "license": "Apache-2.0"
+}
