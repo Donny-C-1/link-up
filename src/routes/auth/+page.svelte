@@ -1,8 +1,4 @@
 <script lang="ts">
-    let { data } = $props();
-
-    console.table(data.users);
-    console.table(data.memData);
 </script>
 
 <div class="wrapper">

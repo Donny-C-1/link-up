@@ -6,15 +6,14 @@ const memData = {
     password: "tryharder"
 }
 
-export async function load() {
-    const users = await db.select().from(usersTable);
-    console.log("Load function");
+// export async function load() {
+//     const users = await db.select().from(usersTable);
 
-    return {
-        users,
-        memData
-    }
-}
+//     return {
+//         users,
+//         memData
+//     }
+// }
 
 export const actions = {
     signup: async ({ request }) => {
@@ -32,13 +31,10 @@ export const actions = {
         // }
         // db.insert(usersTable).values({ username, email, passwordHash });
 
-        console.log(data.get("email"));
     },
     
     login: async ({ request }) => {
-        console.log("Login function");
         const data = await request.formData();
 
-        console.log(data.get("email"));
     }
 }
