@@ -2,7 +2,7 @@ import { pgTable, uniqueIndex, index, pgEnum, serial, text, integer, timestamp, 
 
 export const rolesEnum = pgEnum('roles', ['guest', 'user', 'admin']);
 
-export const users = pgTable('users', {
+export const User = pgTable('users', {
 	id: serial('id').primaryKey(),
 	age: integer('age'),
 	username: text("username").notNull(),
@@ -20,7 +20,7 @@ export const conversations = pgTable('conversations', {
 	name: text("name"),
 	is_group: boolean("is_group").default(false),
 	createdAt: timestamp().defaultNow().notNull(),
-	createdBy: integer("created_by").notNull().references(() => users.id),
+	createdBy: integer("created_by").notNull().references(() => User.id),
 	updatedAt: timestamp().defaultNow().notNull()
 }, (table) => [
 	index("name_index").on(table.name)
@@ -29,7 +29,7 @@ export const conversations = pgTable('conversations', {
 export const messages = pgTable('messages', {
 	id: serial("id").primaryKey(),
 	conversationId: integer("conversation_id").notNull().references(() => conversations.id),
-	senderId: integer("sender_id").notNull().references(() => users.id),
+	senderId: integer("sender_id").notNull().references(() => User.id),
 	isAI: boolean("is_ai").default(false),
 	content: text("content").notNull(),
 	createdAt: timestamp().defaultNow().notNull(),

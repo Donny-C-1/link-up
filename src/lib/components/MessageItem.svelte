@@ -1,5 +1,4 @@
 <script lang="ts">
-    import 'remixicon/fonts/remixicon.css';
     import avatar from "$lib/assets/images/avatar3.png";
     
     const { message } = $$props;

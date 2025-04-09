@@ -1,4 +1,26 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
+    interface FormProps {
+        error?: string;
+        [key: string]: any; // Adjust this as needed for other properties
+    }
+
+    interface Props {
+        form: FormProps
+    }
+
+    const { form }: Props = $props();
+
+    function signupHandler(evt: SubmitEvent): void {
+        // todo Validate input before submitting
+        console.log("Submit Handler");
+    }
+
+    onMount(() => {
+        alert(form?.error)
+    })
+
 </script>
 
 <div class="wrapper">
@@ -33,7 +55,7 @@
                     <div class="signup_link">Not a member ?<a href="java:">Signup now</a></div>
                 </form>
 
-                <form action="?/signup" class="signup">
+                <form action="?/signup" method="post" class="signup" onsubmit={signupHandler}>
                     <div class="field">
                         <input type="text" name="username" placeholder="Username" autocomplete="username" required />
                     </div>
