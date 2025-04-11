@@ -50,3 +50,25 @@ describe('Signup Actions', () => {
         expect(redirect).toHaveBeenCalledWith(303, "/chat");
 	});
 });
+
+describe("Login Action", () => {
+    const formData = new FormData();
+    formData.set('email', 'example@domain.com');
+    formData.set('password', '12345678');
+
+    const request = {
+        request: {},
+        formData: async () => formData
+    }
+
+    test('Should redirect if user exists', async () => {
+        let response;
+        try {
+            response = await actions.login({ request });
+        } catch (err: any) {
+            response = err.message;
+        }
+
+        expect(response).toStrictEqual({ message: "success" });
+    })
+})

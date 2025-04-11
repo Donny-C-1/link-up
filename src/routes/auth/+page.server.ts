@@ -1,16 +1,19 @@
-import db from "$lib/server/db";
-// import { users as usersTable } from "$lib/server/db/schema";
 import { redirect, fail } from "@sveltejs/kit";
-import { createUser } from "$lib/server/db/user.js";
+import { createUser, retrieveUser, retrieveUsersFromConversation } from "$lib/server/db/user.js";
+import { retrieveAllGroupConversationsOfUser } from "$lib/server/db/conversation.js";
 
-// export async function load() {
-//     const users = await db.select().from(usersTable);
-
-//     return {
-//         users,
-//         memData
-//     }
-// }
+export async function load() {
+    try {
+        const user = await retrieveAllGroupConversationsOfUser(2);
+        return {
+            user
+        }
+    } catch (error) {
+        return {
+            error: 'madness'
+        }
+    }
+}
 
 export const actions = {
     signup: async ({ request }) => {
@@ -27,14 +30,16 @@ export const actions = {
 
         try {
             const userId = await createUser({ username, email, passwordHash });
-            return redirect(303, "/chat");
         } catch (error: any) {
             return fail(500, { errMessage: error.message || "Could not create user"});
         }
+        redirect(303, "/chat");
     },
     
     login: async ({ request }) => {
         const data = await request.formData();
+
+        return { message: "success" };
 
     }
 }

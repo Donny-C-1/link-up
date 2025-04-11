@@ -1,25 +1,8 @@
 <script lang="ts">
-    import { onMount } from "svelte";
-
-    interface FormProps {
-        error?: string;
-        [key: string]: any; // Adjust this as needed for other properties
-    }
-
-    interface Props {
-        form: FormProps
-    }
-
-    const { form }: Props = $props();
-
     function signupHandler(evt: SubmitEvent): void {
         // todo Validate input before submitting
         console.log("Submit Handler");
     }
-
-    onMount(() => {
-        alert(form?.error)
-    })
 
 </script>
 
