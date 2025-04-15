@@ -1,19 +1,14 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import ContactItem from "./ContactItem.svelte";
 
-    let contacts: { id: number; name: string, last_message: string, time: string, unread_count: number }[] = $state([]);
-    let selectedConversation = null;
+    let { conversations, setMessages, setActiveConversation } = $props();
+    let activeConversation: number | null = $state(null);
 
-    onMount(() => {
-        // Fetch conversations from the server or state management
-        // For example, using a store or an API call
-        contacts = [
-            { id: 1, name: "Alice", last_message: "Hello!", time: "10:00 AM", unread_count: 2 },
-            { id: 2, name: "Bob", last_message: "How are you?", time: "10:00 AM", unread_count: 2 },
-            { id: 3, name: "Charlie", last_message: "See you later!", time: "10:00 AM", unread_count: 2 },
-        ];
-    })
+    function itemClickHandler(id: number, newMessages: []) {
+        activeConversation = id;
+        setActiveConversation(id);
+        setMessages(newMessages);
+    }
 </script>
 
 <div class="contactPane">
@@ -26,9 +21,9 @@
     </div>
     <div class="body">
         <ul class="contactList">
-            {#each contacts as contact}
+            {#each conversations as conversation}
                 <li class="contactItem">
-                    <ContactItem {contact} />
+                    <ContactItem contact={conversation} isActive={activeConversation === conversation.id} toggleActive={itemClickHandler} />
                 </li>
             {/each}
         </ul>

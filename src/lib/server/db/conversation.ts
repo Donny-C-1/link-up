@@ -5,7 +5,7 @@ import {
 	User as UserTable,
 	usersToConversations
 } from './schema';
-import { Conversation, type NewConversation, type User } from './schema';
+import { Conversation, type NewConversation, type User, type UserToConversation } from './schema';
 
 export async function retrieveConversation(
 	conversationId: Conversation['id']
@@ -28,6 +28,20 @@ export async function retrieveAllConversations(): Promise<Conversation[]> {
 		return conversations;
 	} catch (error) {
 		throw new Error('Failed to retireve all users');
+	}
+}
+
+export async function retrieveUserConversations(userId: User['id']): Promise<(Conversation & UserToConversation)[]> {
+	try {
+		const conversations = await db
+			.select({ ...getTableColumns(ConversationTable), ...getTableColumns(usersToConversations) })
+			.from(UserTable)
+			.innerJoin(usersToConversations, eq(UserTable.id, usersToConversations.userId))
+			.innerJoin(ConversationTable, eq(ConversationTable.id, usersToConversations.conversationId))
+			.where(eq(usersToConversations.userId, userId));
+		return conversations;
+	} catch (error) {
+		throw new Error('Failed to retrieve users conversations');
 	}
 }
 

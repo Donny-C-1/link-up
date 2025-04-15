@@ -1,14 +1,15 @@
 <script lang="ts">
     import avatar from "$lib/assets/images/avatar3.png";
+    import { formatDate } from "$lib/utils/date-helper";
     
     const { message } = $$props;
 </script>
 
-<div class="messageItem {message.type}">
+<div class="messageItem {message.senderId === 2 ? 'sent' : 'received'}">
     <img src={avatar} alt="" width="30" height="30" class="avatar" />
     <div>
-        <p class="messageContent">{message.text}</p>
-        <p class="messageTime">{message.time}</p>
+        <p class="messageContent">{message.content}</p>
+        <p class="messageTime">{message.createdAt}</p>
     </div>
 </div>
 

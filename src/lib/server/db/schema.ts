@@ -54,7 +54,11 @@ export const usersToConversations = pgTable(
 			.references(() => User.id),
 		conversationId: integer('conversation_id')
 			.notNull()
-			.references(() => Conversation.id)
+			.references(() => Conversation.id),
+		unreadCount: integer('unread_count').default(0),
+		lastMessage: text('last_message'),
+		lastMessageTime: timestamp('last_message_time'),
+		joinedAt: timestamp('joined_at').defaultNow().notNull()
 	},
 	(table) => [
 		primaryKey({ columns: [table.userId, table.conversationId] }),

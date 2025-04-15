@@ -1,56 +1,28 @@
 <script lang="ts">
     import avatar from '$lib/assets/images/avatar3.png';
     import MessageItem from './MessageItem.svelte';
-    
-    let chatName : string = "Ekhdal";
+    import { enhance } from '$app/forms';
 
+    let { messages, conversation } = $props();
 </script>
 
 <div class="messageBoard">
     <div class="header">
         <img src={avatar} alt="profile" width="30" height="30" class="avatar"/>
         <div>
-            <p class="chat_name">{chatName}</p>
+            <p class="chat_name">{conversation.name}</p>
             <p class="chat_status">Online &sdot; Last message 10mins ago</p>
         </div>
     </div>
     <div class="body">
         <div class="messageList">
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'Hello!', time: '10:00 AM'}} />
-            <MessageItem message={{type: 'received', text: 'Hi there!', time: '10:01 AM'}} />
-            <MessageItem message={{type: 'sent', text: 'How are you?', time: '10:02 AM'}} />
-            <MessageItem message={{type: 'received', text: 'I am good, thanks!', time: '10:03 AM'}} />
+            {#each messages as msg (msg.id)}
+                <MessageItem message={msg}/>
+            {/each}
         </div>
     </div>
     <div class="footer">
+        <form action="" method="post" use:enhance></form>
         <input class="input" type="text" placeholder="Type a message..." />
         <button>Send</button>
     </div>
@@ -97,6 +69,7 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        padding-top: 2rem;
     }
 
     

@@ -1,78 +1,117 @@
-<script>
-    import avatar from "$lib/assets/images/avatar3.png";
-    let { contact } = $props();
+<script lang="ts">
+	import avatar from '$lib/assets/images/avatar3.png';
+	import { onMount, getContext } from 'svelte';
+	import { formatDate } from '$lib/utils/date-helper';
+	
+	let { contact, isActive, toggleActive } = $props();
+
+	async function fetchMessages() {
+		try {
+			const response = await fetch(`/api/messages?conversationId=${contact.id}`);
+
+			const data = await response.json();
+
+			return data;
+
+		} catch (err) {
+			console.error(err);
+		}
+	}
+
+	async function clickHandler() {
+		
+		const newMessages = await fetchMessages();
+		
+		toggleActive(contact.id, newMessages);
+	}
+
+	onMount(() => {
+	});
 </script>
 
-<button>
-    <img class="avatar" src={avatar} alt="" width="50" height="50" />
-    <div class="contact_info">
-        <div>
-            <p class="name">{contact.name}</p>
-            <p class="time">{contact.time}</p>
-        </div>
-        <div>
-            <p class="last_message">{contact.last_message}</p>
-            <p class="unread_count">{contact.unread_count}</p>
-        </div>
-    </div>
+<button class= {isActive ? 'active' : ''} onclick={clickHandler}>
+	<img class="avatar" src={avatar} alt="" width="50" height="50" />
+	<div class="contact_info">
+		<div>
+			<p class="name">{contact.name}</p>
+			<p class="time">{formatDate(contact.lastMessageTime)}</p>
+		</div>
+		<div>
+			<p class="last_message">{contact.lastMessage}</p>
+			<p class="unread_count">{contact.unreadCount}</p>
+		</div>
+	</div>
 </button>
 
 <style>
-    button {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        border: 0;
-        background-color: transparent;
-        cursor: pointer;
-        padding: 1rem;
-    }
+	button {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		border: 0;
+		background-color: transparent;
+		cursor: pointer;
+		padding: 1rem;
+		border-width: 2px 0 2px 0;
+		border-style: solid;
+		border-color: transparent;
 
-    .avatar {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
-        margin-right: 1rem;
-    }
+		&:is(:hover, :focus-visible) {
+			background-color: var(--color-surface);
+			border-color: var(--color-secondary);
+		}
 
-    .contact_info {
-        flex-grow: 1;
-
-        & div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-
-            &:first-child {
-                margin-bottom: .375rem;
-            }
+        &.active {
+            background-color: var(--color-secondary);
+            border-color: var(--color-primary);
         }
-    }
+	}
 
-    .name {
-        font-weight: semibold;
-        text-align: left;
-        font-size: 1.1rem;
-    }
+	.avatar {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		margin-right: 1rem;
+	}
 
-    .time {
-        font-size: .75rem;
-        color: #888;
-    }
+	.contact_info {
+		flex-grow: 1;
 
-    .last_message {
-        color: gray;
-    }
+		& div {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
 
-    .unread_count {
-        background-color: red;
-        color: white;
-        border-radius: 50%;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-    }
-    /* button {
+			&:first-child {
+				margin-bottom: 0.375rem;
+			}
+		}
+	}
+
+	.name {
+		font-weight: semibold;
+		text-align: left;
+		font-size: 1.1rem;
+	}
+
+	.time {
+		font-size: 0.75rem;
+		color: #888;
+	}
+
+	.last_message {
+		color: gray;
+	}
+
+	.unread_count {
+		background-color: red;
+		color: white;
+		border-radius: 50%;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.75rem;
+	}
+	/* button {
         display: flex;
         width: 100%;
         align-items: center;
