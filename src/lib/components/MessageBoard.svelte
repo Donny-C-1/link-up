@@ -2,8 +2,22 @@
     import avatar from '$lib/assets/images/avatar3.png';
     import MessageItem from './MessageItem.svelte';
     import { enhance } from '$app/forms';
+    import { onMount } from 'svelte';
+	import { ssrExportAllKey } from 'vite/module-runner';
+	import { SingleStoreSmallInt } from 'drizzle-orm/singlestore-core';
 
     let { messages, conversation } = $props();
+
+    onMount(async () => {
+        const stream = new EventSource("/api/sse");
+
+        stream.onmessage = console.log;
+
+        stream.onerror = (err) => {
+            console.error(err);
+            stream.close();
+        }
+    })
 </script>
 
 <div class="messageBoard">
@@ -22,9 +36,12 @@
         </div>
     </div>
     <div class="footer">
-        <form action="" method="post" use:enhance></form>
-        <input class="input" type="text" placeholder="Type a message..." />
-        <button>Send</button>
+        <form action="?/createMessage" method="post" use:enhance>
+            <input type="hidden" value="2" name="senderId" />
+            <input type="hidden" value={conversation.id} name="conversationId" />
+            <input class="input" type="text" name="content" placeholder="Type a message..." />
+            <button type="submit">Send</button>
+        </form>
     </div>
 </div>
 
